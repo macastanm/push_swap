@@ -25,14 +25,35 @@ void	print_list(t_stack *stack)
 	}
 }
 
+/*void	check_size(int size)
+{
+
+}*/
+
+void	multiple_args(int argc, char **argv, t_stack *stack_a)
+{
+	int		j;
+	int		i;
+
+	j = 0;
+	i = argc;
+	while (argc > 1)
+	{
+		j = ft_atoi(argv[--i]);
+		stack_creat(create_node(j), stack_a);
+		argc--;
+	}
+	return ;
+}
+
 void	break_arg(char *argv, t_stack *stack_a)
 {
-	char **split;
-	int i;
-	int j;
+	char	**split;
+	int		j;
+	int		i;
 
-	i = 0;
 	j = 0;
+	i = 0;
 	split = ft_split(argv, ' ');
 	while (split[i])
 		i++;
@@ -49,19 +70,17 @@ void	break_arg(char *argv, t_stack *stack_a)
 int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
-	//t_stack stack_b;
-	int j;
-	int	i;
+	int		j;
+	int		i;
 
 	stack_a.size = 0;
 	j = 0;
 	i = argc;
 	if (argc < 2)
-	{
-		ft_printf("Wrong number of arguments!\n");
-		return (0);
-	}
-	else if (argc == 2)
+		return (write(2, "Error\n", 6));
+	if (check_content(&*argv, argc) != 1)
+		return (write(2, "Error\n", 6));
+	if (argc == 2)
 	{
 		if (ft_strchr(argv[1], ' ') == 0)
 			return (0);
@@ -69,14 +88,9 @@ int	main(int argc, char **argv)
 			break_arg(argv[1], &stack_a);
 	}
 	else
-	{
-		while (argc > 1)
-		{
-			j = ft_atoi(argv[--i]);
-			stack_creat(create_node(j), &stack_a);
-			argc--;
-		}
-	}
+		multiple_args(argc, &*argv, &stack_a);
+	//check_order(stack_a);
+	//check_size(stack_a.size);
 	print_list(&stack_a);
 	return (0);
 }

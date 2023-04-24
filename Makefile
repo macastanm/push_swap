@@ -20,7 +20,8 @@ LIBFT = ./libft-pf-gnl/libft.a
 
 SRC = push_swap.c \
 		node_manipulation.c \
-		frees.c
+		frees.c \
+		check_content.c
 
 OBJ = $(SRC:.c=.o)
 
