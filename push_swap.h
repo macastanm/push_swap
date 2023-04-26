@@ -22,13 +22,13 @@ typedef struct s_node
 {
 	struct s_node	*nx;
 	struct s_node	*pv;
-	int		ct;
+	int				ct;
 }			t_node;
 
 typedef struct s_stack
 {
-	int	size;
 	struct s_node	*top;
+	int				size;
 }			t_stack;
 
 // push_swap.c
@@ -36,6 +36,7 @@ typedef struct s_stack
 void	break_arg(char *argv, t_stack *stack_a);
 void	print_list(t_stack *stack);
 void	multiple_args(int argc, char **argv, t_stack *stack_a);
+int		check_order(t_stack *stack);
 
 // node_manipulation.c
 
@@ -45,10 +46,14 @@ void	stack_creat(t_node *new_node, t_stack *stack);
 // frees.c
 
 void	free_the_split(char **split);
+void	delete_node(t_stack *stack);
+void	free_the_list(t_stack *stack);
 
 // check_content
 
 int		check_content(char **argv, int argc);
 int		check_dup(char **arr);
+int		check_max(char **arr);
+int		check_num(char **arr, int i, int j);
 
 #endif

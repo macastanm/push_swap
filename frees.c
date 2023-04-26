@@ -12,6 +12,26 @@
 
 #include "push_swap.h"
 
+void	delete_node(t_stack *stack)
+{
+	t_node	*tmp;
+
+	tmp = stack->top;
+	stack->top = stack->top->nx;
+	stack->top->pv->pv->nx = stack->top;
+	stack->top->pv = stack->top->pv->pv;
+	free(tmp);
+}
+
+void	free_the_list(t_stack *stack)
+{
+	while (stack->size > 0)
+	{
+		delete_node(stack);
+		stack->size--;
+	}
+}
+
 void	free_the_split(char **split)
 {
 	int	i;

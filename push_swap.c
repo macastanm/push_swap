@@ -25,10 +25,28 @@ void	print_list(t_stack *stack)
 	}
 }
 
-/*void	check_size(int size)
+int	check_order(t_stack *stack)
 {
+	int	i;
 
-}*/
+	i = stack->size;
+	while (i > 1)
+	{
+		if (stack->top->ct > stack->top->nx->ct)
+		{
+			while (i > 0)
+			{
+				stack->top = stack->top->nx;
+				i--;
+			}
+			return (1);
+		}
+		stack->top = stack->top->nx;
+		i--;
+	}
+	stack->top = stack->top->nx;
+	return (0);
+}
 
 void	multiple_args(int argc, char **argv, t_stack *stack_a)
 {
@@ -70,12 +88,8 @@ void	break_arg(char *argv, t_stack *stack_a)
 int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
-	int		j;
-	int		i;
 
 	stack_a.size = 0;
-	j = 0;
-	i = argc;
 	if (argc < 2)
 		return (write(2, "Error\n", 6));
 	if (check_content(&*argv, argc) != 1)
@@ -89,8 +103,12 @@ int	main(int argc, char **argv)
 	}
 	else
 		multiple_args(argc, &*argv, &stack_a);
-	//check_order(stack_a);
-	//check_size(stack_a.size);
+	if (check_order(&stack_a) != 1)
+	{
+		free_the_list(&stack_a);
+		return (0);
+	}
 	print_list(&stack_a);
+	free_the_list(&stack_a);
 	return (0);
 }

@@ -47,19 +47,15 @@ int	check_dup(char **arr)
 	return (1);
 }
 
-int	check_num(char **arr)
+int	check_num(char **arr, int i, int j)
 {
-	int	i;
-	int	j;
-
-	i = 1;
-	j = -1;
 	while (arr[i])
 	{
-		while (arr[i][++j])
+		while (arr[i][j])
 		{
 			if (ft_strchr(" -0123456789", arr[i][j]) == 0)
 				return (0);
+			j++;
 		}
 		i++;
 	}
@@ -71,15 +67,17 @@ int	check_content(char **argv, int argc)
 	char	**arr;
 
 	arr = 0;
-	if (check_num(argv) != 1)
+	if (check_num(argv, 1, 0) != 1)
 		return (0);
 	if (argc == 2)
 	{
 		arr = ft_split(argv[1], ' ');
-		if (check_max(&*arr) != 1)
+		if (check_max(&*arr) != 1 || check_dup(&*arr) != 1)
+		{
+			free_the_split(arr);
 			return (0);
-		if (check_dup(&*arr) != 1)
-			return (0);
+		}
+		free_the_split(arr);
 	}
 	else
 	{
