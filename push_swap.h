@@ -36,12 +36,12 @@ typedef struct s_stack
 void	break_arg(char *argv, t_stack *stack_a);
 void	print_list(t_stack *stack);
 void	multiple_args(int argc, char **argv, t_stack *stack_a);
-int		check_order(t_stack *stack);
 
 // node_manipulation.c
 
 t_node	*create_node(int nbr);
 void	stack_creat(t_node *new_node, t_stack *stack);
+int		check_order(t_stack *stack);
 
 // frees.c
 
@@ -55,5 +55,21 @@ int		check_content(char **argv, int argc);
 int		check_dup(char **arr);
 int		check_max(char **arr);
 int		check_num(char **arr, int i, int j);
+
+// sort
+
+void	sort_2(t_stack *stack_a);
+
+// operations
+
+void	rr(t_stack *stack_a, t_stack *stack_b);
+void	ra(t_stack *stack_a);
+void	rb(t_stack *stack_b);
+
+// operations2
+
+void	ss(t_stack *stack_a, t_stack *stack_b);
+void	sa(t_stack *stack_a);
+void	sb(t_stack *stack_b);
 
 #endif

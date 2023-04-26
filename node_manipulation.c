@@ -12,6 +12,29 @@
 
 #include "push_swap.h"
 
+int	check_order(t_stack *stack)
+{
+	int	i;
+
+	i = stack->size;
+	while (i > 1)
+	{
+		if (stack->top->ct > stack->top->nx->ct)
+		{
+			while (i > 0)
+			{
+				stack->top = stack->top->nx;
+				i--;
+			}
+			return (1);
+		}
+		stack->top = stack->top->nx;
+		i--;
+	}
+	stack->top = stack->top->nx;
+	return (0);
+}
+
 t_node	*create_node(int nbr)
 {
 	t_node	*new;

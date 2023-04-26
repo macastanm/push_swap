@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	print_list(t_stack *stack)
+/*void	print_list(t_stack *stack)
 {
 	int	i;
 
@@ -23,29 +23,20 @@ void	print_list(t_stack *stack)
 		stack->top = stack->top->nx;
 		i++;
 	}
-}
+}*/
 
-int	check_order(t_stack *stack)
+void	size_dest(t_stack *stack_a)
 {
-	int	i;
+	//t_stack stack_b;
 
-	i = stack->size;
-	while (i > 1)
-	{
-		if (stack->top->ct > stack->top->nx->ct)
-		{
-			while (i > 0)
-			{
-				stack->top = stack->top->nx;
-				i--;
-			}
-			return (1);
-		}
-		stack->top = stack->top->nx;
-		i--;
-	}
-	stack->top = stack->top->nx;
-	return (0);
+	if (stack_a->size == 2)
+		sort_2(stack_a);
+	/*else if (stack_a->size == 3)
+		sort_3(stack_a, &stack_b);
+	else if (stack_a->size == 5)
+		sort_5(stack_a, &stack_b);
+	else
+		sort_all(stack_a, &stack_b);*/
 }
 
 void	multiple_args(int argc, char **argv, t_stack *stack_a)
@@ -108,7 +99,8 @@ int	main(int argc, char **argv)
 		free_the_list(&stack_a);
 		return (0);
 	}
-	print_list(&stack_a);
+	size_dest(&stack_a);
+	//print_list(&stack_a);
 	free_the_list(&stack_a);
 	return (0);
 }

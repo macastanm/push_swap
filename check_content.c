@@ -51,6 +51,7 @@ int	check_num(char **arr, int i, int j)
 {
 	while (arr[i])
 	{
+		j = 0;
 		while (arr[i][j])
 		{
 			if (ft_strchr(" -0123456789", arr[i][j]) == 0)
@@ -81,9 +82,7 @@ int	check_content(char **argv, int argc)
 	}
 	else
 	{
-		if (check_max(argv) != 1)
-			return (0);
-		if (check_dup(argv) != 1)
+		if (check_max(argv) != 1 || check_dup(argv) != 1)
 			return (0);
 	}
 	return (1);
