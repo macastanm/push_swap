@@ -36,6 +36,7 @@ typedef struct s_stack
 void	break_arg(char *argv, t_stack *stack_a);
 void	print_list(t_stack *stack);
 void	multiple_args(int argc, char **argv, t_stack *stack_a);
+void	size_dest(t_stack *stack_a);
 
 // node_manipulation.c
 
@@ -59,17 +60,33 @@ int		check_num(char **arr, int i, int j);
 // sort
 
 void	sort_2(t_stack *stack_a);
+void	sort_3(t_stack *stack_a);
+void	sort_5(t_stack *stack_a, t_stack *stack_b);
 
 // operations
 
+void	pa(t_stack *stack_a, t_stack *stack_b);
 void	rr(t_stack *stack_a, t_stack *stack_b);
 void	ra(t_stack *stack_a);
 void	rb(t_stack *stack_b);
 
 // operations2
 
+void	pb(t_stack *stack_a, t_stack *stack_b);
 void	ss(t_stack *stack_a, t_stack *stack_b);
 void	sa(t_stack *stack_a);
 void	sb(t_stack *stack_b);
+
+// operations3
+
+void	rrr(t_stack *stack_a, t_stack *stack_b);
+void	rra(t_stack *stack_a);
+void	rrb(t_stack *stack_b);
+
+// finds
+
+int		find_min(t_stack *stack);
+int		find_max(t_stack *stack);
+void	rotate_to_top(t_stack *stack, int p);
 
 #endif

@@ -24,7 +24,9 @@ SRC = push_swap.c \
 		check_content.c \
 		sort.c \
 		operations.c \
-		operations2.c
+		operations2.c \
+		operations3.c \
+		finds.c
 
 OBJ = $(SRC:.c=.o)
 

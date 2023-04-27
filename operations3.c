@@ -1,48 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   operations3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/26 15:50:59 by macastan          #+#    #+#             */
-/*   Updated: 2023/04/26 15:51:13 by macastan         ###   ########.fr       */
+/*   Created: 2023/04/27 10:26:18 by macastan          #+#    #+#             */
+/*   Updated: 2023/04/27 10:27:54 by macastan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(t_stack *stack_a, t_stack *stack_b)
-{
-	if (stack_b->size < 1)
-		return ;
-	stack_creat(create_node(stack_b->top->ct), stack_a);
-	delete_node(stack_b);
-	stack_b->size--;
-	write(1, "pa\n", 3);
-}
-
-void	rr(t_stack *stack_a, t_stack *stack_b)
+void	rrr(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a->size < 2 || stack_b->size < 2)
 		return ;
-	stack_a->top = stack_a->top->nx;
-	stack_b->top = stack_b->top->nx;
-	write(1, "rr\n", 3);
+	stack_a->top = stack_a->top->pv;
+	stack_b->top = stack_b->top->pv;
+	write(1, "rrr\n", 4);
 }
 
-void	ra(t_stack *stack_a)
+void	rra(t_stack *stack_a)
 {
 	if (stack_a->size < 2)
 		return ;
-	stack_a->top = stack_a->top->nx;
-	write(1, "ra\n", 3);
+	stack_a->top = stack_a->top->pv;
+	write(1, "rra\n", 4);
 }
 
-void	rb(t_stack *stack_b)
+void	rrb(t_stack *stack_b)
 {
 	if (stack_b->size < 2)
 		return ;
-	stack_b->top = stack_b->top->nx;
-	write(1, "rb\n", 3);
+	stack_b->top = stack_b->top->pv;
+	write(1, "rrb\n", 4);
 }

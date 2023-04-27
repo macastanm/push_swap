@@ -27,15 +27,16 @@
 
 void	size_dest(t_stack *stack_a)
 {
-	//t_stack stack_b;
+	t_stack	stack_b;
 
+	stack_b.size = 0;
 	if (stack_a->size == 2)
 		sort_2(stack_a);
-	/*else if (stack_a->size == 3)
-		sort_3(stack_a, &stack_b);
-	else if (stack_a->size == 5)
+	else if (stack_a->size == 3)
+		sort_3(stack_a);
+	else if (stack_a->size == 5 || stack_a->size == 4)
 		sort_5(stack_a, &stack_b);
-	else
+	/*else
 		sort_all(stack_a, &stack_b);*/
 }
 

@@ -18,3 +18,48 @@ void	sort_2(t_stack *stack_a)
 		sa(stack_a);
 	return ;
 }
+
+void	sort_3(t_stack *st_a)
+{
+	if (st_a->top->ct > st_a->top->nx->ct && st_a->top->ct < st_a->top->pv->ct)
+		sa(st_a);
+	else if (st_a->top->ct > st_a->top->nx->ct && st_a->top->ct > st_a->top->pv->ct && st_a->top->nx->ct > st_a->top->pv->ct)
+	{
+		sa(st_a);
+		rra(st_a);
+	}
+	else if (st_a->top->ct > st_a->top->nx->ct && st_a->top->ct > st_a->top->pv->ct && st_a->top->nx->ct < st_a->top->pv->ct)
+		ra(st_a);
+	else if (st_a->top->ct < st_a->top->nx->ct && st_a->top->ct < st_a->top->pv->ct && st_a->top->nx->ct > st_a->top->pv->ct)
+	{
+		sa(st_a);
+		ra(st_a);
+	}
+	else
+		rra(st_a);
+	return ;
+}
+
+void	sort_5(t_stack *stack_a, t_stack *stack_b)
+{
+	int	p;
+
+	p = find_min(stack_a);
+	rotate_to_top(stack_a, p);
+	pb(stack_a, stack_b);
+	if (stack_a->size == 4)
+	{
+		p = find_max(stack_a);
+		rotate_to_top(stack_a, p);
+		pb(stack_a, stack_b);
+	}
+	sort_3(stack_a);
+	if (stack_a->size == 3 && stack_b->size == 2)
+	{
+		pa(stack_a, stack_b);
+		ra(stack_a);
+		pa(stack_a, stack_b);
+	}
+	if (stack_a->size == 3)
+		pa(stack_a, stack_b);
+}
