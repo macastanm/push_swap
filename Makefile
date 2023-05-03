@@ -26,7 +26,10 @@ SRC = push_swap.c \
 		operations.c \
 		operations2.c \
 		operations3.c \
-		finds.c
+		finds.c \
+		algorithm.c \
+		utils.c \
+		execution.c
 
 OBJ = $(SRC:.c=.o)
 

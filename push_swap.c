@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-/*void	print_list(t_stack *stack)
+void	print_list(t_stack *stack)
 {
 	int	i;
 
@@ -23,21 +23,22 @@
 		stack->top = stack->top->nx;
 		i++;
 	}
-}*/
+}
 
 void	size_dest(t_stack *stack_a)
 {
 	t_stack	stack_b;
 
 	stack_b.size = 0;
+	stack_b.id = 'b';
 	if (stack_a->size == 2)
 		sort_2(stack_a);
 	else if (stack_a->size == 3)
 		sort_3(stack_a);
 	else if (stack_a->size == 5 || stack_a->size == 4)
 		sort_5(stack_a, &stack_b);
-	/*else
-		sort_all(stack_a, &stack_b);*/
+	else
+		sort_all(stack_a, &stack_b);
 }
 
 void	multiple_args(int argc, char **argv, t_stack *stack_a)
@@ -82,8 +83,9 @@ int	main(int argc, char **argv)
 	t_stack	stack_a;
 
 	stack_a.size = 0;
+	stack_a.id = 'a';
 	if (argc < 2)
-		return (write(2, "Error\n", 6));
+		return (0);
 	if (check_content(&*argv, argc) != 1)
 		return (write(2, "Error\n", 6));
 	if (argc == 2)
@@ -101,7 +103,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	size_dest(&stack_a);
-	//print_list(&stack_a);
+	print_list(&stack_a);
 	free_the_list(&stack_a);
 	return (0);
 }

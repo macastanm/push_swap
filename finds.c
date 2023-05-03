@@ -12,6 +12,23 @@
 
 #include "push_swap.h"
 
+int find_position(int n, t_stack *s)
+{
+	int i;
+	int size;
+
+	size = s->size;
+	i = 0;
+	while (i < size)
+	{
+		if (s->top->ct == n)
+			break;
+		i++;
+		s->top = s->top->nx;
+	}
+	return (i);
+}
+
 void	rotate_to_top(t_stack *stack, int p)
 {
 	if (p > 1 && p <= 3)

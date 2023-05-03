@@ -28,8 +28,22 @@ typedef struct s_node
 typedef struct s_stack
 {
 	struct s_node	*top;
+	char 			id;
 	int				size;
 }			t_stack;
+
+typedef struct s_utils
+{
+	int a_data;
+	int b_data;
+	int a_rra;
+	int a_ra;
+	int b_rrb;
+	int b_rb;
+	int rr;
+	int rrr;
+	int sum;
+}		t_utils;
 
 // push_swap.c
 
@@ -88,5 +102,25 @@ void	rrb(t_stack *stack_b);
 int		find_min(t_stack *stack);
 int		find_max(t_stack *stack);
 void	rotate_to_top(t_stack *stack, int p);
+int 	find_position(int n, t_stack *s);
+
+// algorithm
+
+void	sort_all(t_stack *stack_a, t_stack *stack_b);
+void	init_utils(t_utils *utils);
+void	count_moves(int n, t_stack *stack, t_utils *utils);
+t_utils	find_best_move(t_stack *stack_a, t_stack *stack_b, t_utils *utils);
+
+// utils
+
+t_stack *copy_stack(t_stack *a);
+void	check_rrr(t_utils *utils);
+int 	sum_moves(t_utils *utils);
+int 	check_best(t_utils *best, t_utils *utils);
+
+// execution
+
+void	execute_best(t_utils *utils, t_stack *stack_a, t_stack *stack_b);
+void	execute_best2(t_utils *utils, t_stack *stack_a, t_stack *stack_b);
 
 #endif
