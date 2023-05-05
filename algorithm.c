@@ -36,7 +36,7 @@ void	sort_all(t_stack *stack_a, t_stack *stack_b)
 	pb(stack_a, stack_b);
 	while (stack_a->size > 0)
 	{
-		utils = find_best_move(stack_a, stack_b, &utils);
+		utils = find_best_move(stack_a, stack_b);
 		execute_best(&utils, stack_a, stack_b);
 	}
 	count_moves(find_max(stack_b), stack_b, &utils);
@@ -49,24 +49,26 @@ void	sort_all(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-t_utils	find_best_move(t_stack *stack_a, t_stack *stack_b, t_utils *utils)
+t_utils	find_best_move(t_stack *stack_a, t_stack *stack_b)
 {
+	t_utils utils;
 	t_utils best_utils;
 	t_stack *copy;
 	int i;
 
 	copy = copy_stack(stack_a);
 	i = 0;
-	count_moves(stack_a->top->ct, stack_a, utils);
-	count_moves(find_position(stack_a->top->ct, stack_b), stack_b, utils);
-	best_utils = *utils;
-	best_utils.sum = sum_moves(utils);
+	init_utils(&utils);
+	count_moves(copy->top->ct, stack_a, &utils);
+	count_moves(find_match(copy->top->ct, stack_b), stack_b, &utils);
+	best_utils = utils;
+	best_utils.sum = sum_moves(&utils);
 	while (i < copy->size)
 	{
-		init_utils(utils);
-		count_moves(stack_a->top->ct, stack_a, utils);
-		count_moves(find_position(stack_a->top->ct, stack_b), stack_b, utils);
-		if (check_best(&best_utils, utils) != 1)
+		init_utils(&utils);
+		count_moves(copy->top->ct, stack_a, &utils);
+		count_moves(find_match(copy->top->ct, stack_b), stack_b, &utils);
+		if (check_best(&best_utils, &utils) == 0)
 			break ;
 		copy->top = copy->top->nx;
 		i++;

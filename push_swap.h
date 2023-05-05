@@ -99,8 +99,8 @@ void	rrb(t_stack *stack_b);
 
 // finds
 
-int		find_min(t_stack *stack);
-int		find_max(t_stack *stack);
+int		find_min_p(t_stack *stack);
+int		find_max_p(t_stack *stack);
 void	rotate_to_top(t_stack *stack, int p);
 int 	find_position(int n, t_stack *s);
 
@@ -109,11 +109,11 @@ int 	find_position(int n, t_stack *s);
 void	sort_all(t_stack *stack_a, t_stack *stack_b);
 void	init_utils(t_utils *utils);
 void	count_moves(int n, t_stack *stack, t_utils *utils);
-t_utils	find_best_move(t_stack *stack_a, t_stack *stack_b, t_utils *utils);
+t_utils	find_best_move(t_stack *stack_a, t_stack *stack_b);
 
 // utils
 
-t_stack *copy_stack(t_stack *a);
+t_stack *copy_stack(t_stack *s);
 void	check_rrr(t_utils *utils);
 int 	sum_moves(t_utils *utils);
 int 	check_best(t_utils *best, t_utils *utils);
@@ -122,5 +122,8 @@ int 	check_best(t_utils *best, t_utils *utils);
 
 void	execute_best(t_utils *utils, t_stack *stack_a, t_stack *stack_b);
 void	execute_best2(t_utils *utils, t_stack *stack_a, t_stack *stack_b);
+int 	find_match(int n, t_stack *s);
+int		find_max(t_stack *stack);
+int		find_min(t_stack *stack);
 
 #endif

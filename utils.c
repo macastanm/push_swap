@@ -12,13 +12,14 @@
 
 #include "push_swap.h"
 
-t_stack *copy_stack(t_stack *a)
+t_stack *copy_stack(t_stack *s)
 {
 	t_stack *copy;
 
 	copy = malloc(sizeof (t_stack));
-	copy->size = a->size;
-	copy->top = a->top;
+	copy->size = s->size;
+	copy->top = s->top;
+	copy->id = s->id;
 	return (copy);
 }
 
@@ -66,10 +67,10 @@ int check_best(t_utils *best, t_utils *utils)
 		*best = *utils;
 		return (0);
 	}
-	if (best->sum > sum_moves(utils))
+	if ((*best).sum > sum_moves(utils))
 	{
 		*best = *utils;
-		best->sum = sum_moves(utils);
+		(*best).sum = sum_moves(utils);
 	}
 	return (1);
 }

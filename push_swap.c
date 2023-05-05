@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	print_list(t_stack *stack)
+/*void	print_list(t_stack *stack)
 {
 	int	i;
 
@@ -23,7 +23,7 @@ void	print_list(t_stack *stack)
 		stack->top = stack->top->nx;
 		i++;
 	}
-}
+}*/
 
 void	size_dest(t_stack *stack_a)
 {
@@ -103,7 +103,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	size_dest(&stack_a);
-	print_list(&stack_a);
+	//print_list(&stack_a);
 	free_the_list(&stack_a);
 	return (0);
 }

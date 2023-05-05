@@ -16,16 +16,19 @@ int find_position(int n, t_stack *s)
 {
 	int i;
 	int size;
+	t_stack	*copy;
 
+	copy = copy_stack(s);
 	size = s->size;
 	i = 0;
 	while (i < size)
 	{
-		if (s->top->ct == n)
+		if (copy->top->ct == n)
 			break;
 		i++;
-		s->top = s->top->nx;
+		copy->top = copy->top->nx;
 	}
+	free(copy);
 	return (i);
 }
 
@@ -49,7 +52,7 @@ void	rotate_to_top(t_stack *stack, int p)
 	}
 }
 
-int	find_min(t_stack *stack)
+int	find_min_p(t_stack *stack)
 {
 	int	p;
 	int	min;
@@ -76,7 +79,7 @@ int	find_min(t_stack *stack)
 	return (p);
 }
 
-int	find_max(t_stack *stack)
+int	find_max_p(t_stack *stack)
 {
 	int	p;
 	int	max;
