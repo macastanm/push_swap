@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-int find_position(int n, t_stack *s)
+int	find_position(int n, t_stack *s)
 {
-	int i;
-	int size;
 	t_stack	*copy;
+	int		i;
+	int		size;
 
 	copy = copy_stack(s);
 	size = s->size;
@@ -24,7 +24,7 @@ int find_position(int n, t_stack *s)
 	while (i < size)
 	{
 		if (copy->top->ct == n)
-			break;
+			break ;
 		i++;
 		copy->top = copy->top->nx;
 	}

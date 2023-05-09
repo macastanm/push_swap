@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 NAME = push_swap
+NAME_BONUS = checker_bonus
 
 CC = cc -g
 CFLAGS = -Wall -Wextra -Werror
@@ -31,7 +32,17 @@ SRC = push_swap.c \
 		utils.c \
 		execution.c
 
+SRC_BONUS = ./bonus/check_bonus.c \
+		./bonus/node_manipulation.c \
+		./bonus/frees.c \
+		./bonus/check_content.c \
+		./bonus/operations.c \
+		./bonus/operations2.c \
+		./bonus/operations3.c \
+		./bonus/run_operations.c
+		
 OBJ = $(SRC:.c=.o)
+BONUS_OBJ = $(SRC_BONUS:.c=.o)
 
 all: $(NAME)
 
@@ -40,13 +51,18 @@ $(LIBFT):
 
 $(NAME): $(OBJ) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o push_swap
+	
+bonus: $(BONUS_OBJ) $(LIBFT)
+	$(CC) $(CFLAGS) $(BONUS_OBJ) $(LIBFT) -o checker_bonus
 
 clean:
 	$(MAKE) clean -C ./libft-pf-gnl
 	@$(RM) $(OBJ)
+	@$(RM) $(BONUS_OBJ)
 
 fclean: clean
 	$(MAKE) fclean -C ./libft-pf-gnl
 	@$(RM) $(NAME)
+	@$(RM) $(NAME_BONUS)
 
 re: fclean all

@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
-# include "./libft-pf-gnl/libft.h"
+# include "../libft-pf-gnl/libft.h"
 
 typedef struct s_node
 {
@@ -28,29 +28,13 @@ typedef struct s_node
 typedef struct s_stack
 {
 	struct s_node	*top;
-	char			id;
 	int				size;
 }			t_stack;
 
-typedef struct s_utils
-{
-	int	a_data;
-	int	b_data;
-	int	a_rra;
-	int	a_ra;
-	int	b_rrb;
-	int	b_rb;
-	int	rr;
-	int	rrr;
-	int	sum;
-}		t_utils;
-
-// push_swap.c
+// checker_bonus.c
 
 void	break_arg(char *argv, t_stack *stack_a);
-void	print_list(t_stack *stack);
 void	multiple_args(int argc, char **argv, t_stack *stack_a);
-void	size_dest(t_stack *stack_a);
 
 // node_manipulation.c
 
@@ -72,12 +56,6 @@ int		check_dup2(char **arr);
 int		check_max(char **arr);
 int		check_num(char **arr, int i, int j);
 
-// sort
-
-void	sort_2(t_stack *stack_a);
-void	sort_3(t_stack *stack_a);
-void	sort_5(t_stack *stack_a, t_stack *stack_b);
-
 // operations
 
 void	pa(t_stack *stack_a, t_stack *stack_b);
@@ -98,33 +76,8 @@ void	rrr(t_stack *stack_a, t_stack *stack_b);
 void	rra(t_stack *stack_a);
 void	rrb(t_stack *stack_b);
 
-// finds
+// run_operations
 
-int		find_min_p(t_stack *stack);
-int		find_max_p(t_stack *stack);
-void	rotate_to_top(t_stack *stack, int p);
-int		find_position(int n, t_stack *s);
-
-// algorithm
-
-void	sort_all(t_stack *stack_a, t_stack *stack_b);
-void	init_utils(t_utils *utils);
-void	count_moves(int n, t_stack *stack, t_utils *utils);
-t_utils	find_best_move(t_stack *stack_a, t_stack *stack_b);
-
-// utils
-
-t_stack	*copy_stack(t_stack *s);
-void	check_rrr(t_utils *utils);
-int		sum_moves(t_utils *utils);
-int		check_best(t_utils *best, t_utils *utils);
-
-// execution
-
-void	execute_best(t_utils *utils, t_stack *stack_a, t_stack *stack_b);
-void	execute_best2(t_utils *utils, t_stack *stack_a, t_stack *stack_b);
-int		find_match(int n, t_stack *s);
-int		find_max(t_stack *stack);
-int		find_min(t_stack *stack);
-
+void	run_operations(char *line, t_stack *stack_a, t_stack *stack_b);
+void	run_operations2(char *line, t_stack *stack_a, t_stack *stack_b);
 #endif

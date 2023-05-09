@@ -28,7 +28,7 @@ void	init_utils(t_utils *utils)
 void	sort_all(t_stack *stack_a, t_stack *stack_b)
 {
 	t_utils	utils;
-	int i;
+	int		i;
 
 	i = 0;
 	init_utils(&utils);
@@ -51,10 +51,10 @@ void	sort_all(t_stack *stack_a, t_stack *stack_b)
 
 t_utils	find_best_move(t_stack *stack_a, t_stack *stack_b)
 {
-	t_utils utils;
-	t_utils best_utils;
-	t_stack *copy;
-	int i;
+	t_utils	utils;
+	t_utils	best_utils;
+	t_stack	*copy;
+	int		i;
 
 	copy = copy_stack(stack_a);
 	i = 0;
@@ -79,8 +79,8 @@ t_utils	find_best_move(t_stack *stack_a, t_stack *stack_b)
 
 void	count_moves(int n, t_stack *stack, t_utils *utils)
 {
-	int n_position;
-	int middle;
+	int	n_position;
+	int	middle;
 
 	n_position = find_position(n, stack);
 	middle = stack->size / 2;

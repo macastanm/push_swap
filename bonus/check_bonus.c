@@ -1,44 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   check_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: macastan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 12:50:21 by macastan          #+#    #+#             */
-/*   Updated: 2023/04/20 12:50:24 by macastan         ###   ########.fr       */
+/*   Created: 2023/05/08 10:37:29 by macastan          #+#    #+#             */
+/*   Updated: 2023/05/08 10:37:47 by macastan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-/*void	print_list(t_stack *stack)
-{
-	int	i;
-
-	i = 0;
-	while (i < stack->size)
-	{
-		ft_printf("%i\n", stack->top->ct);
-		stack->top = stack->top->nx;
-		i++;
-	}
-}*/
-
-void	size_dest(t_stack *stack_a)
+int	run_checker(t_stack *stack_a)
 {
 	t_stack	stack_b;
+	char *line;
 
 	stack_b.size = 0;
-	stack_b.id = 'b';
-	if (stack_a->size == 2)
-		sort_2(stack_a);
-	else if (stack_a->size == 3)
-		sort_3(stack_a);
-	else if (stack_a->size == 5 || stack_a->size == 4)
-		sort_5(stack_a, &stack_b);
+	while ((line = get_next_line(0)))
+		run_operations(line, stack_a, &stack_b);
+	if (check_order(stack_a) == 0 && stack_b.size == 0)
+	{
+		free(line);
+		return (write(2, "OK\n", 3));
+	}
 	else
-		sort_all(stack_a, &stack_b);
+	{
+		free_the_list(&stack_b);
+		free(line);
+		return (write(2, "KO\n", 3));
+	}
 }
 
 void	multiple_args(int argc, char **argv, t_stack *stack_a)
@@ -78,12 +70,11 @@ void	break_arg(char *argv, t_stack *stack_a)
 	free_the_split(split);
 }
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	t_stack	stack_a;
+	t_stack stack_a;
 
 	stack_a.size = 0;
-	stack_a.id = 'a';
 	if (argc < 2)
 		return (0);
 	if (check_content(&*argv, argc) != 1)
@@ -100,9 +91,9 @@ int	main(int argc, char **argv)
 	if (check_order(&stack_a) != 1)
 	{
 		free_the_list(&stack_a);
-		return (0);
+		return (write(2, "OK\n", 3));
 	}
-	size_dest(&stack_a);
+	run_checker(&stack_a);
 	free_the_list(&stack_a);
 	return (0);
 }

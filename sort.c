@@ -23,14 +23,17 @@ void	sort_3(t_stack *st_a)
 {
 	if (st_a->top->ct > st_a->top->nx->ct && st_a->top->ct < st_a->top->pv->ct)
 		sa(st_a);
-	else if (st_a->top->ct > st_a->top->nx->ct && st_a->top->ct > st_a->top->pv->ct && st_a->top->nx->ct > st_a->top->pv->ct)
+	else if (st_a->top->ct > st_a->top->nx->ct && st_a->top->ct
+		> st_a->top->pv->ct && st_a->top->nx->ct > st_a->top->pv->ct)
 	{
 		sa(st_a);
 		rra(st_a);
 	}
-	else if (st_a->top->ct > st_a->top->nx->ct && st_a->top->ct > st_a->top->pv->ct && st_a->top->nx->ct < st_a->top->pv->ct)
+	else if (st_a->top->ct > st_a->top->nx->ct && st_a->top->ct
+		> st_a->top->pv->ct && st_a->top->nx->ct < st_a->top->pv->ct)
 		ra(st_a);
-	else if (st_a->top->ct < st_a->top->nx->ct && st_a->top->ct < st_a->top->pv->ct && st_a->top->nx->ct > st_a->top->pv->ct)
+	else if (st_a->top->ct < st_a->top->nx->ct && st_a->top->ct
+		< st_a->top->pv->ct && st_a->top->nx->ct > st_a->top->pv->ct)
 	{
 		sa(st_a);
 		ra(st_a);

@@ -50,12 +50,12 @@ int	find_max(t_stack *stack)
 	return (max);
 }
 
-int find_match(int n, t_stack *s)
+int	find_match(int n, t_stack *s)
 {
-	t_stack *copy;
-	int match;
-	int i;
-	int max;
+	t_stack	*copy;
+	int		match;
+	int		i;
+	int		max;
 
 	copy = copy_stack(s);
 	match = find_min(s);

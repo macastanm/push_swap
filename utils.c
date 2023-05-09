@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-t_stack *copy_stack(t_stack *s)
+t_stack	*copy_stack(t_stack *s)
 {
-	t_stack *copy;
+	t_stack	*copy;
 
 	copy = malloc(sizeof (t_stack));
 	copy->size = s->size;
@@ -23,9 +23,9 @@ t_stack *copy_stack(t_stack *s)
 	return (copy);
 }
 
-int sum_moves(t_utils *utils)
+int	sum_moves(t_utils *utils)
 {
-	int total;
+	int	total;
 
 	total = 0;
 	check_rrr(utils);
@@ -60,7 +60,7 @@ void	check_rrr(t_utils *utils)
 	}
 }
 
-int check_best(t_utils *best, t_utils *utils)
+int	check_best(t_utils *best, t_utils *utils)
 {
 	if (sum_moves(utils) == 0)
 	{
