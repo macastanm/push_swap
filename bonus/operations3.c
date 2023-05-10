@@ -18,7 +18,6 @@ void	rrr(t_stack *stack_a, t_stack *stack_b)
 		return ;
 	stack_a->top = stack_a->top->pv;
 	stack_b->top = stack_b->top->pv;
-	write(1, "rrr\n", 4);
 }
 
 void	rra(t_stack *stack_a)
@@ -26,7 +25,6 @@ void	rra(t_stack *stack_a)
 	if (stack_a->size < 2)
 		return ;
 	stack_a->top = stack_a->top->pv;
-	write(1, "rra\n", 4);
 }
 
 void	rrb(t_stack *stack_b)
@@ -34,5 +32,4 @@ void	rrb(t_stack *stack_b)
 	if (stack_b->size < 2)
 		return ;
 	stack_b->top = stack_b->top->pv;
-	write(1, "rrb\n", 4);
 }

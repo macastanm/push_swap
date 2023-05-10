@@ -35,6 +35,7 @@ typedef struct s_stack
 
 void	break_arg(char *argv, t_stack *stack_a);
 void	multiple_args(int argc, char **argv, t_stack *stack_a);
+int		check_ok(t_stack *stack_a, t_stack *stack_b);
 
 // node_manipulation.c
 
@@ -78,6 +79,9 @@ void	rrb(t_stack *stack_b);
 
 // run_operations
 
-void	run_operations(char *line, t_stack *stack_a, t_stack *stack_b);
-void	run_operations2(char *line, t_stack *stack_a, t_stack *stack_b);
+int		run_operations(char *line, t_stack *stack_a, t_stack *stack_b);
+int		run_operations2(char *line, t_stack *stack_a, t_stack *stack_b);
+int		run_operations3(char *line, t_stack *stack_a, t_stack *stack_b);
+int		run_operations4(char *line, t_stack *stack_a, t_stack *stack_b);
+
 #endif

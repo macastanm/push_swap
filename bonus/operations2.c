@@ -19,7 +19,6 @@ void	pb(t_stack *stack_a, t_stack *stack_b)
 	stack_creat(create_node(stack_a->top->ct), stack_b);
 	delete_node(stack_a);
 	stack_a->size--;
-	write(1, "pb\n", 3);
 }
 
 void	ss(t_stack *stack_a, t_stack *stack_b)
@@ -35,7 +34,6 @@ void	ss(t_stack *stack_a, t_stack *stack_b)
 	stack_a->top->nx->ct = tmp;
 	stack_b->top->ct = stack_b->top->nx->ct;
 	stack_b->top->nx->ct = tmp2;
-	write(1, "rr\n", 3);
 }
 
 void	sa(t_stack *stack_a)
@@ -47,7 +45,6 @@ void	sa(t_stack *stack_a)
 		return ;
 	stack_a->top->ct = stack_a->top->nx->ct;
 	stack_a->top->nx->ct = tmp;
-	write(1, "sa\n", 3);
 }
 
 void	sb(t_stack *stack_b)
@@ -59,5 +56,4 @@ void	sb(t_stack *stack_b)
 		return ;
 	stack_b->top->ct = stack_b->top->nx->ct;
 	stack_b->top->nx->ct = tmp;
-	write(1, "sb\n", 3);
 }

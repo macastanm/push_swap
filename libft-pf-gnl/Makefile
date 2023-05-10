@@ -50,8 +50,7 @@ FILES = ft_isalpha.c \
 		ft_putcsdiu.c \
 		ft_puthex.c \
 		ft_putpoint.c \
-		get_next_line_bonus.c \
-		get_next_line_utils_bonus.c
+		get_next_line.c
 
 BONUS = ft_lstnew.c \
 		ft_lstadd_front.c \

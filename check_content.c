@@ -19,7 +19,7 @@ int	check_max(char **arr)
 	i = 0;
 	while (arr[i])
 	{
-		if (ft_atoi(arr[i]) > INT_MAX)
+		if (ft_atoi(arr[i]) > INT_MAX || ft_atoi(arr[i]) < INT_MIN)
 			return (0);
 		i++;
 	}

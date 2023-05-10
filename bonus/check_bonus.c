@@ -15,20 +15,38 @@
 int	run_checker(t_stack *stack_a)
 {
 	t_stack	stack_b;
-	char *line;
+	char	*line;
 
 	stack_b.size = 0;
-	while ((line = get_next_line(0)))
-		run_operations(line, stack_a, &stack_b);
-	if (check_order(stack_a) == 0 && stack_b.size == 0)
+	while (1)
 	{
+		line = get_next_line(0);
+		if (!line)
+			break ;
+		if (run_operations(line, stack_a, &stack_b) == 1)
+		{
+			if (stack_b.size != 0)
+				free_the_list(&stack_b);
+			free(line);
+			return (0);
+		}
 		free(line);
+	}
+	free(line);
+	check_ok(stack_a, &stack_b);
+	return (0);
+}
+
+int	check_ok(t_stack *stack_a, t_stack *stack_b)
+{
+	if (check_order(stack_a) == 0 && stack_b->size == 0)
+	{
 		return (write(2, "OK\n", 3));
 	}
 	else
 	{
-		free_the_list(&stack_b);
-		free(line);
+		if (stack_b->size != 0)
+			free_the_list(stack_b);
 		return (write(2, "KO\n", 3));
 	}
 }
@@ -70,9 +88,9 @@ void	break_arg(char *argv, t_stack *stack_a)
 	free_the_split(split);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_stack stack_a;
+	t_stack	stack_a;
 
 	stack_a.size = 0;
 	if (argc < 2)
@@ -88,11 +106,6 @@ int main(int argc, char **argv)
 	}
 	else
 		multiple_args(argc, &*argv, &stack_a);
-	if (check_order(&stack_a) != 1)
-	{
-		free_the_list(&stack_a);
-		return (write(2, "OK\n", 3));
-	}
 	run_checker(&stack_a);
 	free_the_list(&stack_a);
 	return (0);

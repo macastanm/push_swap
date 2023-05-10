@@ -12,47 +12,96 @@
 
 #include "push_swap_bonus.h"
 
-void	run_operations(char *line, t_stack *stack_a, t_stack *stack_b)
+int	run_operations(char *line, t_stack *stack_a, t_stack *stack_b)
 {
 	if (line[0] == 's')
 	{
-		if (line[1] == 'a')
+		if (line[1] == 'a' && line[2] == '\n')
+		{
 			sa(stack_a);
-		else if (line[1] == 'b')
+			return (0);
+		}
+		else if (line[1] == 'b' && line[2] == '\n')
+		{
 			sb(stack_b);
-		else if (line[1] == 's')
+			return (0);
+		}
+		else if (line[1] == 's' && line[2] == '\n')
+		{
 			ss(stack_a, stack_b);
+			return (0);
+		}
 	}
-	else if (line[0] == 'p')
-	{
-		if (line[1] == 'a')
-			pa(stack_a, stack_b);
-		else if (line[1] == 'b')
-			pb(stack_a, stack_b);
-	}
-	run_operations2(line, stack_a, stack_b);
+	if (run_operations2(line, stack_a, stack_b) == 1)
+		return (1);
+	return (0);
 }
 
-void	run_operations2(char *line, t_stack *stack_a, t_stack *stack_b)
+int	run_operations2(char *line, t_stack *stack_a, t_stack *stack_b)
 {
 	if (line[0] == 'r' && line[1] == 'r')
 	{
-		if (line[2] == 'a')
+		if (line[2] == 'a' && line[3] == '\n')
+		{
 			rra(stack_a);
-		else if (line[2] == 'b')
+			return (0);
+		}
+		else if (line[2] == 'b' && line[3] == '\n')
+		{
 			rrb(stack_b);
-		else if (line[2] == 'r')
+			return (0);
+		}
+		else if (line[2] == 'r' && line[3] == '\n')
+		{
 			rrr(stack_a, stack_b);
+			return (0);
+		}
 	}
-	else if (line[0] == 'r')
+	if (run_operations3(line, stack_a, stack_b) == 1)
+		return (1);
+	return (0);
+}
+
+int	run_operations3(char *line, t_stack *stack_a, t_stack *stack_b)
+{
+	if (line[0] == 'r')
 	{
-		if (line[1] == 'a')
+		if (line[1] == 'a' && line[2] == '\n')
+		{
 			ra(stack_a);
-		else if (line[1] == 'b')
+			return (0);
+		}
+		else if (line[1] == 'b' && line[2] == '\n')
+		{
 			rb(stack_b);
-		else if (line[1] == 'r')
+			return (0);
+		}
+		else if (line[1] == 'r' && line[2] == '\n')
+		{
 			rr(stack_a, stack_b);
+			return (0);
+		}
 	}
-	else
-		return ;
+	if (run_operations4(line, stack_a, stack_b) == 1)
+		return (1);
+	return (0);
+}
+
+int	run_operations4(char *line, t_stack *stack_a, t_stack *stack_b)
+{
+	if (line[0] == 'p')
+	{
+		if (line[1] == 'a' && line[2] == '\n')
+		{
+			pa(stack_a, stack_b);
+			return (0);
+		}
+		else if (line[1] == 'b' && line[2] == '\n')
+		{
+			pb(stack_a, stack_b);
+			return (0);
+		}
+	}
+	write(2, "Error\n", 6);
+	return (1);
 }
