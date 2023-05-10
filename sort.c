@@ -21,25 +21,29 @@ void	sort_2(t_stack *stack_a)
 
 void	sort_3(t_stack *st_a)
 {
-	if (st_a->top->ct > st_a->top->nx->ct && st_a->top->ct < st_a->top->pv->ct)
-		sa(st_a);
-	else if (st_a->top->ct > st_a->top->nx->ct && st_a->top->ct
-		> st_a->top->pv->ct && st_a->top->nx->ct > st_a->top->pv->ct)
+	if (check_order(st_a) == 1)
 	{
-		sa(st_a);
-		rra(st_a);
+		if (st_a->top->ct > st_a->top->nx->ct && st_a->top->ct
+			< st_a->top->pv->ct)
+			sa(st_a);
+		else if (st_a->top->ct > st_a->top->nx->ct && st_a->top->ct
+			> st_a->top->pv->ct && st_a->top->nx->ct > st_a->top->pv->ct)
+		{
+			sa(st_a);
+			rra(st_a);
+		}
+		else if (st_a->top->ct > st_a->top->nx->ct && st_a->top->ct
+			> st_a->top->pv->ct && st_a->top->nx->ct < st_a->top->pv->ct)
+			ra(st_a);
+		else if (st_a->top->ct < st_a->top->nx->ct && st_a->top->ct
+			< st_a->top->pv->ct && st_a->top->nx->ct > st_a->top->pv->ct)
+		{
+			sa(st_a);
+			ra(st_a);
+		}
+		else
+			rra(st_a);
 	}
-	else if (st_a->top->ct > st_a->top->nx->ct && st_a->top->ct
-		> st_a->top->pv->ct && st_a->top->nx->ct < st_a->top->pv->ct)
-		ra(st_a);
-	else if (st_a->top->ct < st_a->top->nx->ct && st_a->top->ct
-		< st_a->top->pv->ct && st_a->top->nx->ct > st_a->top->pv->ct)
-	{
-		sa(st_a);
-		ra(st_a);
-	}
-	else
-		rra(st_a);
 	return ;
 }
 
